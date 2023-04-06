@@ -14,13 +14,13 @@ var length = prompt("Choose a password between 8 and 128 characters.");
 var chooseNumbers = confirm('Do you want your password to contain numbers?');
 var chooseupper = confirm("Do you want your password to contain upper case letters?");
 var chooselower = confirm("Do you want your password to contain lower case letters?");
-var choosesymbols = confirm("Do you want your password to contain symbols?");
-var responses = length, chooseupper, chooselower, choosesymbols;
+var chooseymbols = confirm("Do you want your password to contain symbols?");
+var responses = {length, chooseupper, chooselower, chooseymbols};
 
 
 if ((length < 8) || (length > 128))
   alert("Please choose a password between 8 and 128");
-else if ((!chooseupper) && (!chooselower) && (!choosesymbols) && (!chooseNumbers))
+else if ((!chooseupper) && (!chooselower) && (!chooseymbols) && (!chooseNumbers))
   alert ("You must choose atleast one!");
 else 
  valid = true ;
@@ -45,11 +45,11 @@ function generatePassword() {
   }
   if (passwordChoices.chooseupper) {
     for (var i of bigLetters)
-      possibleCombo.push(i);
+      combo.push(i);
   }
   if (passwordChoices.choosesymbols) {
     for (var i of symbols)
-      possibleCombo.push(i);
+      combo.push(i);
   }
 
 
@@ -57,7 +57,7 @@ function generatePassword() {
 
 
   for (var i = 0; i < passwordChoices.length; i++) {
-   randomPassword += combo[Math.floor(Math.random() * combo.length)];
+   randomPassword =+ combo[Math.floor(Math.random() * combo.length)];
     
   }
   console.log(randomPassword);
