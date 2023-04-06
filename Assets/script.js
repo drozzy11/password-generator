@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//all possible choices
 var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 var bigLetters =  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] ;
 var smallLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'] ;
@@ -17,15 +18,16 @@ var chooselower = confirm("Do you want your password to contain lower case lette
 var chooseymbols = confirm("Do you want your password to contain symbols?");
 var responses = {
   length: length, 
-  chooseupper: chooseupper, 
-  chooselower: chooselower, 
-  choosesymbols: chooseymbols};
-
-
-if ((length < 8) || (length > 128))
+  chooseNumbers:chooseNumbers,
+  chooseupper: chooseupper,
+  chooselower: chooselower,
+  chooseymbols: chooseymbols,
+  
+}
+if((length < 8)||(length > 128))
   alert("Please choose a password between 8 and 128");
-else if ((!chooseupper)&&(!chooselower)&&(!chooseymbols)&&(!chooseNumbers))
-  alert ("You must choose atleast one!");
+else if((!chooseupper)&&(!chooselower)&&(!chooseymbols)&&(!chooseNumbers))
+  alert("You must choose atleast one!");
 else 
  valid = true ;
 
@@ -37,31 +39,33 @@ function generatePassword() {
 
   var passwordChoices = criteria();
   var combo = [];
-  var randomPassword =[""];
+  var randomPassword = "";
 
-  if (passwordChoices.chooseNumbers) {
+
+
+  if(passwordChoices.chooseNumbers) {
     for (var i of numbers)
       combo.push(i);
   }
-  if (passwordChoices.chooselower) {
-    for (var i of smallLetters)
+  if(passwordChoices.chooselower) {
+    for(var i of smallLetters)
       combo.push(i);
   }
-  if (passwordChoices.chooseupper) {
+  if(passwordChoices.chooseupper) {
     for (var i of bigLetters)
       combo.push(i);
   }
-  if (passwordChoices.choosesymbols) {
-    for (var i of symbols)
+  if(passwordChoices.chooseymbols) {
+    for(var i of symbols)
       combo.push(i);
   }
 
 
   console.log(combo);
 
-
-  for (var i = 0; i < passwordChoices.length; i++) {
-   randomPassword =+ combo[Math.floor(Math.random() * combo.length)];
+// initially had =+ which was causing a NaN error //
+  for(var i = 0; i < passwordChoices.length; i++) {
+   randomPassword += combo[Math.floor(Math.random() * combo.length)];
     
   }
   console.log(randomPassword);
@@ -81,3 +85,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
