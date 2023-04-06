@@ -6,7 +6,7 @@ var bigLetters =  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', '
 var smallLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'] ;
 var symbols = ['!', '%', '+', '/', "'", '@', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
 
-
+// creates a function for all the criteria
 function criteria() {
 var valid = false
 do {
@@ -15,20 +15,24 @@ var chooseNumbers = confirm('Do you want your password to contain numbers?');
 var chooseupper = confirm("Do you want your password to contain upper case letters?");
 var chooselower = confirm("Do you want your password to contain lower case letters?");
 var chooseymbols = confirm("Do you want your password to contain symbols?");
-var responses = {length, chooseupper, chooselower, chooseymbols};
+var responses = {
+  length: length, 
+  chooseupper: chooseupper, 
+  chooselower: chooselower, 
+  choosesymbols: chooseymbols};
 
 
 if ((length < 8) || (length > 128))
   alert("Please choose a password between 8 and 128");
-else if ((!chooseupper) && (!chooselower) && (!chooseymbols) && (!chooseNumbers))
+else if ((!chooseupper)&&(!chooselower)&&(!chooseymbols)&&(!chooseNumbers))
   alert ("You must choose atleast one!");
 else 
  valid = true ;
 
-}while(!valid);
+} while(!valid);
 return responses;
 } 
-
+// fucntion that generates random password
 function generatePassword() {
 
   var passwordChoices = criteria();
