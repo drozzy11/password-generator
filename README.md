@@ -29,3 +29,4 @@ The following image shows the web applications appearance and functionality:
 
 ## Website link
 
+[Password Generator](https://drozzy11.github.io/password-generator/)
