@@ -22,3 +22,10 @@ THEN the password is either displayed in an alert or written to the page
 ```
 
 ## Mock Up
+
+The following image shows the web applications appearance and functionality:
+
+![Image of Functional Website](./Assets/images/password-gen-ss.png)
+
+## Website link
+
